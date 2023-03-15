@@ -1,0 +1,35 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    float: left;
+    position: relative;
+    background-color: #AAAAAA;
+    width: 8em;
+}
+
+li ul {
+    display: none;
+    position: absolute;
+}
+
+li:hover ul {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-family: Verdana;
+}
+
+nav {
+    clear: both;
+}
+
+li ul a:hover {
+    color: black;
+}

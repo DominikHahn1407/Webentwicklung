@@ -1,0 +1,42 @@
+h1 {
+    color: red;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+div > p {
+    font-family: "Comic Sans MS";
+}
+
+.grau {
+    background-color: darkgray;
+}
+
+#englisch > p {
+    border: 1px solid black;
+}
+
+
+/* Links.html */
+a[href] {
+    text-decoration: none;
+}
+
+a[target="_blank"] {
+    color: green;
+}
+
+a[href^="#"]:hover {
+    color: red;
+    font-weight: bold;
+}
+
+a[href^="https"] {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a[href^="http:"] {
+    font-family: "Comic Sans MS";
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <style>
+        body {
+            margin: 200px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            width: 100px;
+        }
+
+        th {
+            background-color: black;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: darkgray;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Ware</th>
+            <th>Preis</th>
+        </tr>
+        <tr>
+            <td>Äpfel</td>
+            <td>3 Euro</td>
+        </tr>
+        <tr>
+            <td>Birnen</td>
+            <td>1,5 Euro</td>
+        </tr>
+        <tr>
+            <td>Bananen</td>
+            <td>2 Euro</td>
+        </tr>
+    </table>
+</body>
+</html>

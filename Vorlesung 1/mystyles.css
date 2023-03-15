@@ -1,0 +1,24 @@
+body * {
+    border: 1px solid black;
+    margin: 12px;
+    text-align: center;
+}
+
+section, article {
+    width: 50%;    
+    margin-left: 25%;
+}
+
+nav {
+    float: left;
+}
+
+aside {
+    float: right;
+}
+
+nav, aside {
+    width: 20%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
