@@ -7,4 +7,4 @@ class PersonController:
         self.app.add_route("/persons", self.res, suffix="persons")
         self.app.add_route("/person/{pid}", self.res, suffix="person")
         self.app.add_route("/person", self.res, suffix="person")
-        self.app.add_route("personfavourite/{person_id}/{video_id}", self.res, suffix="addvideofavourite")
+        self.app.add_route("/personfavourite/{person_id}/{video_id}", self.res, suffix="addvideofavourite")

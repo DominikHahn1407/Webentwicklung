@@ -9,7 +9,7 @@ class Person(ModelBase):
 
     pid = sa.Column('pid', sa.Integer, primary_key=True, autoincrement=True)
     surename = sa.Column('surename', sa.String, nullable=False)
-    birthdate = sa.Column('birthdate', sa.Date, nullable=False)
+    birthdate = sa.Column('birthdate', sa.String, nullable=False)
     videos = sa.orm.relationship('Favours', back_populates='person')
 
     def to_dict(self):

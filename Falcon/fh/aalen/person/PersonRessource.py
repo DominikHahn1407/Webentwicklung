@@ -36,7 +36,7 @@ class PersonRessource:
         resp.status = falcon.HTTP_OK
         resp.content_type = falcon.MEDIA_TEXT
 
-    def on_get_addvideo_favourite(self, req, resp, person_id, video_id):
+    def on_get_addvideofavourite(self, req, resp, person_id, video_id):
         resp.text = None
         PersonService.add_video_to_favourites(video_id, person_id)
         resp.text = "Favourite connected successfully"
