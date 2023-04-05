@@ -11,3 +11,5 @@ class VideoController:
         self.app.add_route("/videosbyagerating/{age_rating}", self.res, suffix="videosbyagerating")
         self.app.add_route("/videogenres", self.res, suffix="videogenres")
 
+        self.app.add_static_route('/', 'C:/Users/ZBook/OneDrive/Studium/Dozent/Webentwicklung/Übungen/Rest-API')
+

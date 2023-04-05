@@ -38,6 +38,6 @@ class PersonRessource:
 
     def on_get_addvideofavourite(self, req, resp, person_id, video_id):
         resp.text = None
-        PersonService.add_video_to_favourites(video_id, person_id)
+        PersonService.add_video_to_favourites(person_id, video_id)
         resp.text = "Favourite connected successfully"
         resp.status = falcon.HTTP_200
