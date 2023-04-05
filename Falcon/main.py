@@ -35,11 +35,15 @@ import falcon
 
 from fh.aalen.video.VideoController import VideoController
 from fh.aalen.video.VideoRessource import VideoRessource
+from fh.aalen.person.PersonController import PersonController
+from fh.aalen.person.PersonRessource import PersonRessource
 
 
 app = application = falcon.App()
 video_ressource = VideoRessource()
+person_ressource = PersonRessource()
 video_controller = VideoController(app, video_ressource)
+person_controller = PersonController(app, person_ressource)
 
 if __name__ == '__main__':
     with make_server("", 8081, app) as httpd:
