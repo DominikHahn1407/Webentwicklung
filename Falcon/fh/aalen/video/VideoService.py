@@ -42,6 +42,12 @@ class VideoService:
         return genres
 
     @classmethod
+    def get_video_numbers(cls):
+        session = DBSession.get_session()
+        vnr = session.query(Video.vnr).all()
+        return vnr
+
+    @classmethod
     def create_video(cls, json_video):
         video = Video()
         video = cls.__json_to_video(video, json_video)

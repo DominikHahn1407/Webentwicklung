@@ -26,7 +26,12 @@ class VideoRessource:
 
     def on_get_videogenres(self, req, resp):
         genre_list = VideoService.get_video_genres()
-        result = [dict(row) for row in genre_list]
+        result = [{"genre": row[0]} for row in genre_list]
+        resp.text = json.dumps(result, ensure_ascii=False, indent=2)
+
+    def on_get_videonumbers(self, req, resp):
+        vnr_list = VideoService.get_video_numbers()
+        result = [row[0] for row in vnr_list]
         resp.text = json.dumps(result, ensure_ascii=False, indent=2)
 
     def on_post_video(self, req, resp):

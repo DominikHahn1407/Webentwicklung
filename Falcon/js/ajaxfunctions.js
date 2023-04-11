@@ -1,10 +1,20 @@
 //On Page load - register listeners and load existing videos in datatable
 $(document).ready(function() {
     loadDataTable();
+    updateSelect();
     //process the form newVideo
     $("#newVideo").submit(function(event) {
         postVideo(event);
     });
+
+    $('#updateVideo').submit(function(event) {
+        updateVideo(event);
+    });
+
+    $('#deleteVideo').click(function(event) {
+        deleteVideo(event);
+    });
+
     //Load Datatable
     $('#loadtable').click(function() {
         loadDataTable();
@@ -27,6 +37,7 @@ function postVideo(event) {
         data: JSON.stringify(formData), // data we want to POST
         success: function( data, textStatus, jQxhr ){
             loadDataTable();
+            updateSelect();
         },
         error: function( jqXhr, textStatus, errorThrown ){
             console.log(errorThrown);
@@ -35,6 +46,45 @@ function postVideo(event) {
     // stop the form from submitting the normal way and refreshing the page
     event.preventDefault();
 }
+
+function updateVideo(event) {
+    var id = $('#vnr').val();
+    var formData = {
+        'title': $('input[name=title_update]').val(),
+        'description': $('textarea[name=description_update]').val(),
+        'age_rating': $('input[name=age_rating_update]').val(),
+        'genre': $('input[name=genre_update]').val()
+    };
+
+    $.ajax({
+      url: '/video/' + id,
+      type: 'PUT',
+      data: JSON.stringify(formData),
+      success: function(updatedData) {
+        loadDataTable();
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.error('Error updating entry with ID ${id}: ${errorThrown}');
+      }
+    });
+}
+
+function deleteVideo(event) {
+    var id = $('#vnr_del').val();
+
+    $.ajax({
+      url: '/video/' + id,
+      type: 'DELETE',
+      success: function() {
+        loadDataTable();
+        updateSelect();
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.error('Error deleting instance with ID ${instanceId}: ${errorThrown}');
+      }
+    });
+}
+
 
 function loadDataTable() {
     var table = $('#videotable').DataTable({
@@ -51,5 +101,30 @@ function loadDataTable() {
             { "data": "genre"}
         ]
     });
+}
+
+function updateSelect() {
+    $.ajax({
+    url: "/videonumbers", // replace with your server-side script URL
+    type: "GET",
+    dataType: "json",
+    success: function(data) {
+      var select = $("#vnr"); // select element to populate
+      var select_del = $("#vnr_del");
+      // clear any existing options
+      select.empty();
+      select_del.empty();
+      // add new options based on data
+      data.forEach(function(entry) {
+        var option = $("<option></option>").attr("value", entry.id).text(entry);
+        var option_del = $("<option></option>").attr("value", entry.id).text(entry);
+        select.append(option);
+        select_del.append(option_del);
+      });
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log("Error fetching data: " + textStatus + ", " + errorThrown);
+    }
+  });
 }
 
